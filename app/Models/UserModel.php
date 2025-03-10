@@ -8,5 +8,12 @@ class UserModel extends Model
 {
     protected $table = 'users';
     // protected $returnType = "object";
-    protected $allowedFields = ['id', 'username', 'password', 'role', 'active', 'is_deleted'];
+    protected $allowedFields = ['id', 'name', 'username', 'password', 'role', 'active', 'is_deleted'];
+
+    public function getListOperator(){
+        $builder = $this->db->table('users');
+
+        $builder->where('role', 'operator');
+        return $builder->get()->getResultArray();
+    }
 }

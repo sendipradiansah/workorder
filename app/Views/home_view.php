@@ -1,4 +1,4 @@
-<?php echo view('header_view'); ?>
+<?= view('header_view'); ?>
       <!--end::Sidebar-->
       <!--begin::App Main-->
       <main class="app-main">
@@ -157,4 +157,4 @@
         <!--end::App Content-->
       </main>
       <!--end::App Main-->
-<?php echo view('footer_view'); ?>    
+<?= view('footer_view'); ?>    

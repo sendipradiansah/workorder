@@ -44,9 +44,9 @@
                 <label for="Login"><h3>Login</h3></label>
             </div>
             <?php if(session()->getFlashdata('msg') !== NULL) :?>
-                <div class="alert alert-danger"><?php echo session()->getFlashdata('msg'); ?></div>
+                <div class="alert alert-danger"><?= session()->getFlashdata('msg'); ?></div>
             <?php endif; ?>
-            <form action="<?php base_url(); ?>login/auth" method="post">
+            <form action="<?php base_url(); ?>login" method="post">
                 <div class="mb-3">
                     <label for=""><span class="textLabel">Username</span></label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Username">

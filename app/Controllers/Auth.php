@@ -6,15 +6,20 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\UserModel;
 
-class Login extends BaseController
+class Auth extends BaseController
 {
     public function index()
     {
         //
+        if (session()->get('is_logged_in') == TRUE) {
+            return redirect()->to('/');
+        }
+        
         return view('login_view');
+
     }
 
-    public function auth(){
+    public function login(){
         $session = session();
         $model = new UserModel();
         $username = $this->request->getVar('username');
@@ -29,10 +34,11 @@ class Login extends BaseController
             $verify_password = password_verify($password, $passwordDB);
             if($verify_password){
                 $session_data = [
-                    // 'nama' => $data['nama'],
-                    'username' => $data['username'],
-                    'role'      => $data['role']
-
+                    'id'            => $data['id'],
+                    'name'          => $data['name'],
+                    'username'      => $data['username'],
+                    'role'          => $data['role'],
+                    'is_logged_in'  => TRUE
                 ];
                 $session->set($session_data);
                 return redirect()->to('/');

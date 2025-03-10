@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
                 'null'       => false   
             ],
             'role'        => [
-                'type' => 'ENUM("manager_production", "operator")', 
+                'type' => 'ENUM("administrator","manager_production", "operator")', 
                 'default' => 'operator',
             ],
             'active' => [
@@ -44,14 +44,16 @@ class CreateUsersTable extends Migration
 				'default'   => '0',
             ],
             'created_by'	=> [
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 30,
-				'null'			=> false,	
+				'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+                'null'       => false,	
 			],
 			'updated_by'	=> [
-				'type'			=> 'VARCHAR',
-				'constraint'	=> 30,
-				'null'			=> false,	
+				'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+                'null'       => true	
             ],
             'created_at DATETIME DEFAULT CURRENT_TIMESTAMP',
             'updated_at DATETIME DEFAULT CURRENT_TIMESTAMP'
